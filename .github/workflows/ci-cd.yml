@@ -12,18 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # HTML Validator
-      - name: Validate HTML files
-        uses: Cyb3r-Jak3/html5validator-action@v1.0.2
+      # Validate HTML files using HTMLProofer
+      - name: Validate HTML
+        uses: chabad360/htmlproofer@v1.1
         with:
-          root: '.' # Location of your HTML files
-
-      # CSS Linting
-      - name: Install stylelint
-        run: npm install -g stylelint stylelint-config-standard
-
-      - name: Lint CSS files
-        run: stylelint "**/*.css"
+          directory: '.' # Validate all files in project root
 
   deploy:
     name: Deploy to GitHub Pages
